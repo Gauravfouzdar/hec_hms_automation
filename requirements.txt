@@ -1,0 +1,21 @@
+# Python dependencies for hec_hms_automation.
+# Install (CMD):   pip install -r requirements.txt
+# See docs/DEPENDENCIES.md for which module needs which library, and for the
+# NON-pip tools (HEC-HMS, HEC-Vortex) that must be installed separately.
+
+numpy
+pandas
+openpyxl          # Excel read/write (parameter workbooks, 10-daily flow workbooks)
+pyyaml            # scenarios.yaml
+scipy             # Gumbel distribution (design storms)
+shapely
+geopandas
+pyogrio           # fast GIS I/O backend for geopandas
+rasterio          # terrain / LULC rasters (flow paths, slopes, impervious %)
+xarray
+netCDF4
+cftime            # non-standard CMIP6 calendars (noleap, 360_day)
+matplotlib        # diagnostic plots
+
+# Optional -- only to READ HEC-DSS result files (extract-10daily etc.):
+pydsstools

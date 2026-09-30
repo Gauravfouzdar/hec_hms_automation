@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.pytest_cache/
+
+# HEC-HMS / DSS / GIS data: never commit model data or results
+*.dss
+*.bak-*
+*.sqlite
+*.tif
+*.nc
+*.shp
+*.dbf
+*.shx
+*.prj
+*.cpg
+*.out
+*.log
+
+# Third-party binaries: install separately (docs/DEPENDENCIES.md)
+vortex/
+jre/
+
+# Local machine config (copy from config/*.example.* and edit)
+config/*.local.*
+.env

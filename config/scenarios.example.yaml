@@ -1,0 +1,39 @@
+# Precipitation scenarios to stamp into every HMS project under a parent folder.
+# Copy to scenarios.local.yaml (git-ignored) and edit paths for YOUR machine:
+#   hms-auto build-scenarios "<parent>" --config config\scenarios.local.yaml
+#
+# HOW TO FILL EACH FIELD (verify by cataloguing the DSS -- pydsstools search_path):
+#   dss          the gridded precipitation DSS built by Vortex (chapter 7)
+#   pathname     the FIRST grid record, e.g. /A/B/PRECIPITATION/01JAN2024:0000/01JAN2024:0100/ts/
+#                The B-part is whatever you passed as --part-b -- spelling must match EXACTLY.
+#   start/end    HMS date format "01 January 2024"; time "24:00" = midnight ending that day
+#   interval_min MUST equal the DSS record spacing: 60 = hourly, 1440 = daily.
+#                A mismatch makes HMS report missing precipitation.
+
+scenarios:
+  # Hourly design storm (built by `hms-auto design-storm --vortex`; 240 hourly records)
+  - tag: RP100
+    dss: "D:/example/MyBasin_100RP_ts.dss"
+    pathname: "/UTM46N/MyBasin/PRECIPITATION/01JAN2024:0000/01JAN2024:0100/ts/"
+    start_date: "01 January 2024"
+    start_time: "00:00"
+    end_date: "10 January 2024"
+    end_time: "24:00"
+    interval_min: 60
+
+  # Daily historical climate run (built by `hms-auto climate --vortex`)
+  - tag: Historical
+    dss: "D:/example/MyBasin_historical_ts.dss"
+    pathname: "/UTM46N/MyBasin/PRECIPITATION/01JAN1951:0000/01JAN1951:2400/ts/"
+    start_date: "01 January 1993"
+    start_time: "00:00"
+    end_date: "31 December 2014"
+    end_time: "24:00"
+    interval_min: 1440
+
+# Settings applied to every generated component
+defaults:
+  version: "4.13"
+  unit_system: "Metric"
+  timezone_id: "Asia/Calcutta"
+  timezone_gmt_offset_ms: 19800000

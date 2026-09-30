@@ -1,0 +1,24 @@
+# Conda environment (optional alternative to `pip install -r requirements.txt`).
+# Create (CMD):   conda env create -f environment.yml
+# Activate (CMD): conda activate hec-hms-automation
+name: hec-hms-automation
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - openpyxl
+  - pyyaml
+  - scipy
+  - shapely
+  - geopandas
+  - pyogrio
+  - rasterio
+  - xarray
+  - netcdf4
+  - cftime
+  - matplotlib
+  - pip
+  - pip:
+      - pydsstools   # optional: reading HEC-DSS results

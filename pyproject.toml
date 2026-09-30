@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hec-hms-automation"
+version = "0.1.0"
+description = "Automation toolkit for HEC-HMS 4.x: fill model parameters, build precipitation scenarios and runs, drive Vortex/DSS pipelines, compute runs headlessly and extract results."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy",
+    "pandas",
+    "openpyxl",
+    "pyyaml",
+    "scipy",
+    "shapely",
+    "geopandas",
+    "pyogrio",
+    "rasterio",
+    "xarray",
+    "netCDF4",
+    "cftime",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+# pydsstools is only needed to READ HEC-DSS results (see docs/DEPENDENCIES.md).
+# It ships Windows wheels for a limited set of Python versions, so it is optional.
+dss = ["pydsstools"]
+dev = ["pytest"]
+
+[project.scripts]
+hms-auto = "hec_hms_automation.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+hec_hms_automation = ["resources/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
